@@ -33,24 +33,15 @@ def downloadAnimatedStickerSet():
     with ZipFile(DOWNLOAD_FOLDER_PATH + '/animatedStickerSet.zip', 'r') as zip_ref:
         zip_ref.extractall(DOWNLOAD_FOLDER_PATH)
 
-    # Delete unnecessary extra files
-    if os.path.exists(DOWNLOAD_FOLDER_PATH + '/productInfo.meta'):
-        os.remove(DOWNLOAD_FOLDER_PATH + '/productInfo.meta')
+    fileNameList = os.listdir(DOWNLOAD_FOLDER_PATH)
+    for fileName in fileNameList:
+        if(fileName != 'animation@2x'):
+            os.remove(DOWNLOAD_FOLDER_PATH + '/' + fileName)
 
-    if os.path.exists(DOWNLOAD_FOLDER_PATH + '/animatedStickerSet.zip'):
-        os.remove(DOWNLOAD_FOLDER_PATH + '/animatedStickerSet.zip')
-
-    if os.path.exists(DOWNLOAD_FOLDER_PATH + '/tab_off@2x.png'):
-        os.remove(DOWNLOAD_FOLDER_PATH + '/tab_off@2x.png')
-
-    if os.path.exists(DOWNLOAD_FOLDER_PATH + '/tab_on@2x.png'):
-        os.remove(DOWNLOAD_FOLDER_PATH + '/tab_on@2x.png')
-    
-    # Auto delete all _key files
-    imageFileNameList = os.listdir(DOWNLOAD_FOLDER_PATH)
-    for imageName in imageFileNameList:
-        if '_key' in imageName:
-            os.remove(DOWNLOAD_FOLDER_PATH + '/' + imageName)
+    # Move files from /animation@2x up one level to DOWNLOAD_FOLDER_PATH
+    animFileNameList = os.listdir(DOWNLOAD_FOLDER_PATH + '/animation@2x')
+    for fileName in animFileNameList:
+        os.rename(DOWNLOAD_FOLDER_PATH + '/animation@2x/' + fileName, DOWNLOAD_FOLDER_PATH + '/' + fileName)
 
 def convertPNGstoGIFs():
     imageFileNameList = os.listdir(DOWNLOAD_FOLDER_PATH)
