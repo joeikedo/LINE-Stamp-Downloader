@@ -27,7 +27,7 @@ def downloadAnimatedStickerSet():
     stickerURLIDArray = stickerURLArray1[1].split('/')
     stickerURLID = stickerURLIDArray[0]
 
-    requestURL = 'http://dl.stickershop.line.naver.jp/products/0/0/1/' + stickerURLID + '/iphone/stickers@2x.zip'
+    requestURL = 'http://dl.stickershop.line.naver.jp/products/0/0/1/' + stickerURLID + '/iphone/stickerpack@2x.zip'
     urllib.request.urlretrieve(requestURL, DOWNLOAD_FOLDER_PATH + '/' + 'animatedStickerSet.zip')
 
     with ZipFile(DOWNLOAD_FOLDER_PATH + '/animatedStickerSet.zip', 'r') as zip_ref:
