@@ -82,7 +82,7 @@ def downloadEmojiSet():
     for i in range(NUMBER_OF_EMOJI_STAMPS):
         currentIterationImageURL = adjustEmojiSetURL(i + 1) # Start at 1 not 0
         img_data = requests.get(currentIterationImageURL).content
-        completeFilePath = os.path.join(DOWNLOAD_FOLDER_PATH, EMOJI_SET_NAME + str(i + 1)  + LINE_STAMP_FILE_EXTENSION) # use os.path.join to add path of specific folder to save image to.  
+        completeFilePath = os.path.join(DOWNLOAD_FOLDER_PATH, EMOJI_SET_NAME + '_' + str(i + 1)  + LINE_STAMP_FILE_EXTENSION) # use os.path.join to add path of specific folder to save image to.  
         with open(completeFilePath, 'wb') as handler:
             handler.write(img_data)
 
