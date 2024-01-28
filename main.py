@@ -11,6 +11,14 @@ GIF_FOLDER_PATH = 'C:/Users/joeik/OneDrive/Documents/Code Repos/LINE-Stamp-Downl
 LINE_STAMP_FILE_EXTENSION = '.png' # All LINE Stamps I know of are in APNG (.png) format
 EMOJI_SET_NAME = 'Jersey-chan-emoji-6'
 
+def clearFolders():
+    pngFilesList = os.listdir(DOWNLOAD_FOLDER_PATH)
+    for imageName in pngFilesList:
+        os.remove(DOWNLOAD_FOLDER_PATH + imageName)
+
+    gifFilesList = os.listdir(GIF_FOLDER_PATH)
+    for gifName in gifFilesList:
+        os.remove(GIF_FOLDER_PATH + gifName)
 
 def downloadAnimatedStickerSet():
     # Create download URL, AKA http://dl.stickershop.line.naver.jp/products/0/0/1/3333/iphone/stickers@2x.zip but replace 3333 with the LINE Sticker store ID of the set
@@ -85,6 +93,7 @@ def main():
     #convertPNGstoGIFs()
     downloadAnimatedStickerSet()
     #convertPNGstoGIFs()
+    #clearFolders()
 
 
 if __name__ == "__main__":
